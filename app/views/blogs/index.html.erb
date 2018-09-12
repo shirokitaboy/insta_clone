@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <h1 class="page-header">みんなの投稿</h1>
+      <% @blogs.each do |blog| %>
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "#{blog.user.name}", blog %></li>
+        <li class="list-group-item"><%= image_tag(blog.image, :class => "image_content center-block")%></li>
+        <li class="list-group-item"><%= blog.content %></li>
+        <% if logged_in? %>
+        <% if blog.user_id == current_user.id %>
+        <li class="list-group-item">
+          <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-default ' %>
+          <%= link_to 'Delete', blog, class: 'btn btn-danger ', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+</tbody>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="./footerFixed.js"></script>
+  </head>
+
+  <body>
+  <div id="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+            <span class="sr-only">InstagramClone</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/blogs">InstagramClone</a>
+        </div>
+        <div id="gnavi" class="collapse navbar-collapse">
+          <% if logged_in? %>
+          <ul class="nav navbar-nav">
+            <li><a href="/blogs">投稿一覧</a></li>
+            <li><a href="/blogs/new">投稿する</a></li>
+            <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          </ul>
+          <% else %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to "投稿一覧", blogs_path %></li>
+            <li><%= link_to "ログイン", new_session_path %></li>
+            <li><%= link_to "サインアップはこちら", new_user_path %></li>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+      </div>
+<dvi  calss="border-top">
+  <footer class="footer">
+      <p>製作者 鍵本哲宏</p>
+      <p> 2018 May graduating class</p>
+    </footer>
+  </dvi>
+  </body>
+</html>
