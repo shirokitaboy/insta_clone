@@ -1,11 +1,6 @@
+<h1><%= @user.name %>のページ</h1>
 <div class='container'>
   <div class="wrappaer col-md-8 col-md-offset-2 col-sm-10">
-
-<h1><%= @user.name %>のページ</h1>
-
-<p>メールアドレス: <%= @user.email %></p>
-
-
     <h1>あなたのお気に入り一覧</h1>
       <section class="main-header">
         <% if @favorite_blogs.present? %>
