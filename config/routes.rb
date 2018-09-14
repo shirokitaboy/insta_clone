@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'blogs#top'
   resources :feeds
   resources :blogs
   resources :users, only: [:new, :create, :show]
